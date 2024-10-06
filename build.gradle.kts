@@ -1,7 +1,7 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
-    kotlin("jvm") version "1.9.24"
+    kotlin("jvm") version "2.0.20"
     `java-library`
     `maven-publish`
     id("net.nemerosa.versioning") version "3.1.0"
@@ -13,6 +13,7 @@ version = versioning.info.tag ?: versioning.info.full
 
 repositories {
     mavenCentral()
+    maven(url = "https://jitpack.io")
 }
 
 val shadowImplementation = configurations.create("shadowImplementation"){
@@ -22,11 +23,11 @@ val shadowImplementation = configurations.create("shadowImplementation"){
 
 dependencies {
     api(kotlin("stdlib"))
-    api(platform("com.github.1fexd:super"))
+    api(platform("com.github.1fexd:super:0.0.5"))
     api("org.apache.httpcomponents.core5:httpcore5")
 
     testImplementation("org.hamcrest:hamcrest:2.2")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.10.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.11.2")
     testImplementation(kotlin("test"))
 }
 
